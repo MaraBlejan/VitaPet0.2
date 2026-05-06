@@ -1,0 +1,64 @@
+﻿@model VitaPet0._2.Models.Pet
+
+@{
+    ViewData["Title"] = "Modifică Animal";
+}
+
+<section class="section py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-primary text-white py-3">
+                        <h4 class="mb-0 text-center"><i class="bi bi-pencil-square me-2"></i>Modifică Animal</h4>
+                    </div>
+                    <div class="card-body p-4">
+                        <form asp-action="Edit">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                            <input type="hidden" asp-for="Id" />
+                            <input type="hidden" asp-for="CreatedAt" />
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Species" class="form-label fw-bold">Specie</label>
+                                    <input asp-for="Species" class="form-control" required />
+                                    <span asp-validation-for="Species" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Breed" class="form-label fw-bold">Rasă</label>
+                                    <input asp-for="Breed" class="form-control" />
+                                    <span asp-validation-for="Breed" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="BirthTime" class="form-label fw-bold">Data Nașterii</label>
+                                    <input asp-for="BirthTime" type="date" class="form-control" />
+                                    <span asp-validation-for="BirthTime" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="OwnerId" class="form-label fw-bold">Proprietar</label>
+                                    <select asp-for="OwnerId" class="form-select" asp-items="ViewBag.OwnerId"></select>
+                                    <span asp-validation-for="OwnerId" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary btn-lg">Actualizează Animal</button>
+                                <a asp-action="Index" class="btn btn-outline-secondary">Înapoi la Listă</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

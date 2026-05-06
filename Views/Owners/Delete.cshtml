@@ -1,0 +1,55 @@
+﻿@model VitaPet0._2.Models.Owner
+
+@{
+    ViewData["Title"] = "Delete Owners";
+}
+
+<section class="section py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+             
+                <div class="card shadow border-0">
+                    <div class="card-header bg-danger text-white py-3">
+                        <h4 class="mb-0 text-center"><i class="bi bi-exclamation-triangle me-2"></i>Confirmare Ștergere</h4>
+                    </div>
+                    <div class="card-body p-4">
+                        <p class="text-center text-muted mb-4">Ești sigur că vrei să elimini acest proprietar din baza de date?</p>
+
+                        <div class="list-group list-group-flush mb-4">
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <span class="fw-bold">Nume Complet:</span>
+                                <span>@Model.FirstName @Model.LastName</span>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <span class="fw-bold">Telefon:</span>
+                                <span>@Model.Phone</span>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <span class="fw-bold">Email:</span>
+                                <span>@Model.Email</span>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <span class="fw-bold">Adresă:</span>
+                                <span>@Model.Address</span>
+                            </div>
+                        </div>
+
+                       
+                        <form asp-action="Delete">
+                            <input type="hidden" asp-for="Id" />
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-danger btn-lg shadow-sm">
+                                    <i class="bi bi-trash me-2"></i>Șterge Definitiv
+                                </button>
+                                <a asp-action="Index" class="btn btn-outline-secondary">
+                                    Anulează și înapoi la listă
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

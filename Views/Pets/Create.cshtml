@@ -1,0 +1,67 @@
+﻿@model VitaPet0._2.Models.Pet
+
+@{
+    ViewData["Title"] = "Add Pet";
+}
+
+<section class="section py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-success text-white py-3">
+                        <h4 class="mb-0 text-center"><i class="bi bi-paw me-2"></i>Add New Pet</h4>
+                    </div>
+                    <div class="card-body p-4">
+                        <form asp-action="Create" method="post">
+                            @Html.AntiForgeryToken()
+                            <div asp-validation-summary="All" class="alert alert-danger"></div>
+
+                            <input type="hidden" asp-for="Id" />
+                            <input type="hidden" asp-for="CreatedAt" />
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Species" class="form-label fw-bold">Species</label>
+                                    <input asp-for="Species" class="form-control" placeholder="Dog, Cat..." required />
+                                    <span asp-validation-for="Species" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Breed" class="form-label fw-bold">Breed</label>
+                                    <input asp-for="Breed" class="form-control" placeholder="Labrador, Persian..." />
+                                    <span asp-validation-for="Breed" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="BirthTime" class="form-label fw-bold">Birth Date</label>
+                                    <input asp-for="BirthTime" type="date" class="form-control" />
+                                    <span asp-validation-for="BirthTime" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="OwnerId" class="form-label fw-bold">Owner</label>
+                                    <select asp-for="OwnerId" class="form-select" asp-items="@(ViewData["OwnerId"] as SelectList)">
+                                        <option value="">-- Select owner --</option>
+                                    </select>
+                                    <span asp-validation-for="OwnerId" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-success btn-lg">Save Pet</button>
+                                <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

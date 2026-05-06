@@ -1,0 +1,80 @@
+﻿@model IEnumerable<VitaPet0._2.Models.Appointment>
+
+@{
+    ViewData["Title"] = "Gestiune Programări";
+}
+
+<section class="section py-5">
+    <div class="container">
+        <!-- Header pagina cu buton de adaugare -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="text-success fw-bold"><i class="bi bi-calendar-check me-2"></i>Programări Clinica</h1>
+            <a asp-action="Create" class="btn btn-success btn-lg shadow-sm">
+                <i class="bi bi-plus-circle me-2"></i>Programare Nouă
+            </a>
+        </div>
+
+        <!-- Tabelul de gestionare -->
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="bg-light text-dark">
+                            <tr>
+                                <th class="ps-4">Data și Ora</th>
+                                <th>Animal (Rasa)</th>
+                                <th>Doctor Specialist</th>
+                                <th>Status</th>
+                                <th class="text-center pe-4">Acțiuni</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="ps-4 fw-bold text-dark">
+                                        @item.AppointmentDate.ToString("dd MMM yyyy, HH:mm")
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-info text-dark">@item.Pet?.Breed</span>
+                                    </td>
+                                    <td>
+                                        <i class="bi bi-person-badge me-1"></i>Dr. @item.Doctor?.LastName
+                                    </td>
+                                    <td>
+                                        @{
+                                            var badgeClass = item.Status == "Scheduled" ? "bg-warning" :
+                                            item.Status == "Completed" ? "bg-success" : "bg-danger";
+                                        }
+                                        <span class="badge @badgeClass">@item.Status</span>
+                                    </td>
+                                    <td class="text-center pe-4">
+                                        <div class="btn-group" role="group">
+                                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-primary btn-sm">
+                                                <i class="bi bi-pencil"></i>
+                                            </a>
+                                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-info btn-sm">
+                                                <i class="bi bi-eye"></i>
+                                            </a>
+                                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger btn-sm">
+                                                <i class="bi bi-trash"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                            @if (!Model.Any())
+                            {
+                                <tr>
+                                    <td colspan="5" class="text-center py-5 text-muted">
+                                        Nu există programări înregistrate. <a asp-action="Create">Adaugă una acum.</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

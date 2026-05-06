@@ -1,0 +1,65 @@
+﻿@model VitaPet0._2.Models.Doctor
+
+@{
+    ViewData["Title"] = "Add Doctor";
+}
+
+<section class="section py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-success text-white py-3">
+                        <h4 class="mb-0 text-center"><i class="bi bi-person-badge me-2"></i>Add New Doctor</h4>
+                    </div>
+                    <div class="card-body p-4">
+                        <form asp-action="Create" method="post">
+                            @Html.AntiForgeryToken()
+                            <div asp-validation-summary="All" class="alert alert-danger"></div>
+
+                            <input type="hidden" asp-for="Id" />
+                            <input type="hidden" asp-for="CreatedAt" />
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="FirstName" class="form-label fw-bold">First Name</label>
+                                    <input asp-for="FirstName" class="form-control" placeholder="John" required />
+                                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="LastName" class="form-label fw-bold">Last Name</label>
+                                    <input asp-for="LastName" class="form-control" placeholder="Doe" required />
+                                    <span asp-validation-for="LastName" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Specialization" class="form-label fw-bold">Specialization</label>
+                                    <input asp-for="Specialization" class="form-control" placeholder="Dentistry, Surgery..." />
+                                    <span asp-validation-for="Specialization" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Email" class="form-label fw-bold">Email</label>
+                                    <input asp-for="Email" type="email" class="form-control" placeholder="name@example.com" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-success btn-lg">Save Doctor</button>
+                                <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

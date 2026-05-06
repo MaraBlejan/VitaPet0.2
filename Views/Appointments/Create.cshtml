@@ -1,0 +1,71 @@
+﻿@model VitaPet0._2.Models.Appointment
+
+@{
+    ViewData["Title"] = "Book an Appointment";
+}
+
+<section class="section py-5">
+    <div class="container">
+        <h1 class="text-center mb-5">Book an Appointment</h1>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <!-- Alegere Animal -->
+                    <div class="mb-3">
+                        <label asp-for="PetId" class="form-label fw-bold">Select Pet</label>
+                        <select asp-for="PetId" class="form-select" asp-items="ViewBag.PetId">
+                            <option selected disabled>Choose your pet...</option>
+                        </select>
+                        <span asp-validation-for="PetId" class="text-danger"></span>
+                    </div>
+
+                    <!-- Alegere Doctor -->
+                    <div class="mb-3">
+                        <label asp-for="DoctorId" class="form-label fw-bold">Select Doctor</label>
+                        <select asp-for="DoctorId" class="form-select" asp-items="ViewBag.DoctorId">
+                            <option selected disabled>Choose a specialist...</option>
+                        </select>
+                        <span asp-validation-for="DoctorId" class="text-danger"></span>
+                    </div>
+
+                    <!-- Data si Ora -->
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label asp-for="AppointmentDate" class="form-label fw-bold">Date and Time</label>
+                            <input asp-for="AppointmentDate" class="form-control" type="datetime-local" required />
+                            <div class="form-text">Working hours: 08:00 - 17:00</div>
+                            <span asp-validation-for="AppointmentDate" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <!-- Status (Implicit Scheduled) -->
+                    <div class="mb-3">
+                        <label asp-for="Status" class="form-label fw-bold">Initial Status</label>
+                        <select asp-for="Status" class="form-select">
+                            <option value="Scheduled">Scheduled</option>
+                            <option value="Completed">Completed</option>
+                            <option value="Canceled">Canceled</option>
+                        </select>
+                    </div>
+
+                    <!-- Buton Submit -->
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-success btn-lg">
+                            Submit Appointment
+                        </button>
+                        <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

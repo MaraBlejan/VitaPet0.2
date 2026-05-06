@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - VitaPet</title>
+
+ 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+
+    <style>
+        .bg-success {
+            background-color: #198754 !important;
+        }
+        .navbar-dark .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+        }
+        .navbar-dark .nav-link:hover {
+            color: #fff !important;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm">
+            <div class="container">
+                <a class="navbar-brand fw-bold fs-3" asp-area="" asp-controller="Home" asp-action="Index">
+                    <i class="bi bi-heart-pulse-fill me-2"></i>VitaPet
+                </a>
+
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
+                        aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                
+                <div class="collapse navbar-collapse" id="menu">
+                    <ul class="navbar-nav mx-auto text-center">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Owners" asp-action="Index">Proprietari</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Pets" asp-action="Index">Animale</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Doctors" asp-action="Index">Echipa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Services" asp-action="Index">Servicii</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Appointments" asp-action="Index">Programari</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="MedicalRecords" asp-action="Index">Istoric</a>
+                        </li>
+                    </ul>
+
+                  
+                    <div class="navbar-text text-white fw-semibold ms-lg-auto d-none d-lg-block">
+                        <i class="bi bi-person-circle me-1"></i> user@email.com
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container flex-grow-1 my-5">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+   
+    <footer class="footer mt-auto py-4 bg-white border-top shadow-sm">
+        <div class="container text-center">
+            <span class="text-muted fw-bold">
+                &copy; @DateTime.Now.Year - VitaPet Clinica Veterinara | <a asp-area="" asp-controller="Home" asp-action="Privacy" class="text-success text-decoration-none">Privacy</a>
+            </span>
+        </div>
+    </footer>
+
+ 
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+   
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

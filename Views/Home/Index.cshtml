@@ -1,0 +1,85 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<style>
+    .hero {
+        background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+        color: white;
+        padding: 4rem 0;
+        border-radius: 0.5rem;
+        margin-bottom: 2rem;
+    }
+    .feature-icon {
+        font-size: 2rem;
+        color: #4f46e5;
+    }
+    .card-cta {
+        background: linear-gradient(90deg,#06b6d4,#4f46e5);
+        color: white;
+        border: none;
+    }
+</style>
+
+<div class="container">
+    <div class="hero text-center">
+        <h1 class="display-5 fw-bold">Welcome to VitaPet</h1>
+        <p class="lead mb-4">Comprehensive veterinary management for pets, owners and appointments — fast and simple.</p>
+        <p>
+            <a class="btn btn-light btn-lg me-2" href="/Pets" role="button">View Pets</a>
+            <a class="btn btn-outline-light btn-lg" href="/Appointments" role="button">Book Appointment</a>
+        </p>
+    </div>
+
+    <div class="row g-4 mb-4">
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Manage Pets</h5>
+                    <p class="card-text">Add, edit and view pet records and medical history with an intuitive interface.</p>
+                    <a href="/Pets" class="btn btn-sm card-cta">Open Pets</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Schedule Appointments</h5>
+                    <p class="card-text">Create and track appointments; keep your clinic organized and on time.</p>
+                    <a href="/Appointments" class="btn btn-sm card-cta">Schedule</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Medical Records</h5>
+                    <p class="card-text">Store examinations, vaccinations and treatment notes securely.</p>
+                    <a href="/MedicalRecords" class="btn btn-sm card-cta">View Records</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="mb-5">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h3>Quick actions</h3>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Add a new pet — <a href="/Pets/Create">Create</a></li>
+                    <li class="list-group-item">Register an owner — <a href="/Owners/Create">Create</a></li>
+                    <li class="list-group-item">Create appointment — <a href="/Appointments/Create">Create</a></li>
+                </ul>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="~/images/pet-hero.svg" alt="Pet illustration" class="img-fluid" style="max-height:200px;">
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-light py-4 text-center">
+        <small class="text-muted">© @DateTime.Now.Year VitaPet — built with ASP.NET Core</small>
+    </footer>
+</div>

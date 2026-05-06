@@ -1,0 +1,50 @@
+﻿@model VitaPet0._2.Models.Pet
+
+@{
+    ViewData["Title"] = "Detalii Animal";
+}
+
+<section class="section py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow border-0">
+                    <div class="card-header bg-info text-dark py-3">
+                        <h4 class="mb-0 text-center"><i class="bi bi-paw me-2"></i>Detalii Animal</h4>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="list-group list-group-flush mb-4">
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <span class="fw-bold text-muted">Specie:</span>
+                                <span class="fs-5">@Model.Species</span>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <span class="fw-bold text-muted">Rasă:</span>
+                                <span>@Model.Breed</span>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <span class="fw-bold text-muted">Data Nașterii:</span>
+                                <span>@Model.BirthTime.ToString("dd MMM yyyy")</span>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <span class="fw-bold text-muted">Proprietar:</span>
+                                <span>@(Model.Owner != null ? $"{Model.Owner.FirstName} {Model.Owner.LastName}" : "—")</span>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <span class="fw-bold text-muted">Înregistrat la:</span>
+                                <span>@Model.CreatedAt.ToString("dd MMM yyyy")</span>
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                            <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary px-4">
+                                <i class="bi bi-pencil me-1"></i> Modifică
+                            </a>
+                            <a asp-action="Index" class="btn btn-outline-secondary px-4">Înapoi la listă</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
